@@ -1,6 +1,6 @@
 # SemanticVault
 
-Semantic document search engine built with TypeScript, Node.js and pgvector. Index documents and retrieve them by meaning — not just keywords — using cosine similarity over dense vector embeddings stored natively in PostgreSQL.
+Semantic document search engine built with TypeScript, Node.js and pgvector. Index documents and retrieve them by meaning - not just keywords - using cosine similarity over dense vector embeddings stored natively in PostgreSQL.
 
 Runs entirely offline with a local HuggingFace embedding model. No external API keys required.
 
@@ -13,7 +13,7 @@ POST /api/v1/documents
         ↓
 Text → all-MiniLM-L6-v2 (local, quantized) → float32[384]
         ↓
-pgvector — stores embedding with IVFFlat index
+pgvector - stores embedding with IVFFlat index
         ↓
 POST /api/v1/search
         ↓
@@ -25,10 +25,10 @@ Query → embed → cosine similarity → ranked results
 ## Tech Stack
 
 - **TypeScript** + **Node.js 20**
-- **Express** — HTTP server
-- **@xenova/transformers** — local HuggingFace inference (all-MiniLM-L6-v2)
-- **pgvector** — vector similarity search in PostgreSQL
-- **IVFFlat index** — approximate nearest neighbor search
+- **Express** - HTTP server
+- **@xenova/transformers** - local HuggingFace inference (all-MiniLM-L6-v2)
+- **pgvector** - vector similarity search in PostgreSQL
+- **IVFFlat index** - approximate nearest neighbor search
 - **Docker** + **Docker Compose**
 
 ---
@@ -46,7 +46,7 @@ docker compose up -d
 
 API available at `http://localhost:3000`
 
-No API keys needed — embeddings run locally inside the container.
+No API keys needed - embeddings run locally inside the container.
 
 ---
 
@@ -118,15 +118,15 @@ Response:
 ```
 semanticvault/
 ├── src/
-│   ├── index.ts          — Express entrypoint, graceful shutdown
-│   ├── config.ts         — env-based configuration
-│   ├── database.ts       — pg pool, pgvector init, IVFFlat index
-│   ├── embeddings.ts     — local transformer inference
+│   ├── index.ts          - Express entrypoint, graceful shutdown
+│   ├── config.ts         - env-based configuration
+│   ├── database.ts       - pg pool, pgvector init, IVFFlat index
+│   ├── embeddings.ts     - local transformer inference
 │   └── routes/
-│       ├── documents.ts  — index, list, delete
-│       └── search.ts     — cosine similarity search
+│       ├── documents.ts  - index, list, delete
+│       └── search.ts     - cosine similarity search
 ├── docker/
-│   └── Dockerfile        — multi-stage build
+│   └── Dockerfile        - multi-stage build
 ├── docker-compose.yml
 └── .env.example
 ```
